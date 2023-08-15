@@ -11,9 +11,9 @@
             <tr>
                 <th scope="col">Credit ID</th>
                 <th scope="col">Farm</th>
-                <th scope="col">Available credits</th>
-                <th scope="col">Pending credits</th>
                 <th scope="col">Total credits</th>
+                <th scope="col">Verification status</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -21,15 +21,15 @@
                 <th scope="row">CRED-001</th>
                 <td>Farm 1</td>
                 <td>100</td>
-                <td>50</td>
-                <td>150</td>
+                <td>Approved</td>
+                <td><button class="btn btn-primary">Sell credits</button></td>
             </tr>
             <tr>
                 <th scope="row">CRED-002</th>
                 <td>Farm 2</td>
-                <td>500</td>
                 <td>20</td>
-                <td>520</td>
+                <td>Pending</td>
+                <td><button class="btn btn-primary" disabled>Sell credits</button></td>
             </tr>
             </tbody>
         </table>

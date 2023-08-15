@@ -23,8 +23,19 @@ Route::get('/generatecredit', function () {
 });
 
 Route::get('/eligibilitytool', function () {
-    return view('creditgenerate.eligibility');
+    return view('creditgenerate.estimation');
 });
 
 Route::get('/getbalance',[EligibilityController::class,'getBalance'])->name('getBalance');
 
+Route::get('/estimatecredit', function () {
+    return view('creditgenerate.estimation');
+});
+
+Route::get('/creditgeneration', function () {
+    return view('creditgenerate.generation');
+});
+
+Route::get('/marketplace', function () {
+    return view('creditpurchase.marketplace');
+});

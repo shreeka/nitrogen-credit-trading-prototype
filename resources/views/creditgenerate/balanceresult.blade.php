@@ -11,11 +11,11 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>N (FU/ha)</th>
-                        <th>P (FU/ha)</th>
-                        <th>K (FU/ha)</th>
-                        <th>P2O5 (FU/ha)</th>
-                        <th>K2O (FU/ha)</th>
+                        <th>N (kg/ha)</th>
+                        <th>P (kg/ha)</th>
+                        <th>K (kg/ha)</th>
+                        <th>P2O5 (kg/ha)</th>
+                        <th>K2O (kg/ha)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -39,9 +39,6 @@
                         <td>Fertilizer applied</td>
                         <td> {{ $fertiliserApplied }} </td>
                     </tr>
-                    <tr name="recommendedFertilizer">
-                        <td>Fertilizer recommended</td>
-                    </tr>
                     <tr name="total" class="fs-5">
                         <td>TOTAL INPUT</td>
                         <td> {{ $totalInput }}</td>
@@ -54,11 +51,11 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>N (FU/ha)</th>
-                        <th>P (FU/ha)</th>
-                        <th>K (FU/ha)</th>
-                        <th>P2O5 (FU/ha)</th>
-                        <th>K2O (FU/ha)</th>
+                        <th>N (kg/ha)</th>
+                        <th>P (kg/ha)</th>
+                        <th>K (kg/ha)</th>
+                        <th>P2O5 (kg/ha)</th>
+                        <th>K2O (kg/ha)</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -69,6 +66,10 @@
                     <tr name="Uptake">
                         <td>Uptake</td>
                         <td>{{ $balance['Noutputs_terms']['Nuptake'] }}</td>
+                        <td>{{ $balance['Pcf'] }}</td>
+                        <td>{{ $balance['Kcf'] }}</td>
+                        <td>{{ $balance['P2O5cf'] }}</td>
+                        <td>{{ $balance['K2Ocf']}}</td>
                     </tr>
                     <tr name="NminPostharvest">
                         <td>End of soil</td>
@@ -82,9 +83,6 @@
                         <td>Volatilization</td>
                         <td>{{ $balance['Noutputs_terms']['Nvolatilization'] }}</td>
                     </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                    </tr>
                     <tr name="total" class="fs-5">
                         <td>TOTAL OUTPUT</td>
                         <td> {{ $totalOutput }}</td>
@@ -97,9 +95,27 @@
     <div class="card">
         <h5 class="card-header">Eligibility check</h5>
         <div class="card-body">
-          <h6>Nitrogen Balance (FU/ha): {{ $nitrogenBal }}</h6>
-          <h6>Baseline Nitrogen Surplus (FU/ha) : {{ $baselineNSurplus }} </h6>
-          <h6>Credits generated : {{ $credits }}</h6>
+          <h6>Nitrogen Balance (kg/ha): {{ $nitrogenBal }}</h6>
+          <h6>Surplus allowance for the farm (kg/ha) : {{ $allowedSurplus }} </h6>
+          <h6>Baseline Nitrogen Balance (kg/ha) (Current nitrogen surplus for the farm) : {{ $baselineNSurplus }} </h6>
+
+            @if ($nitrogenBal < $allowedSurplus)
+                @if($nitrogenBal < $baselineNSurplus)
+                    <p class="text-success h5">Credits generated: {{ $credits }}</p>
+                @else
+                    <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is more than baseline nitrogen balance.</p>
+                @endif
+            @else
+                <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is more than surplus allowance.</p>
+            @endif
+        </div>
+    </div>
+    <br>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="btn-group" role="group">
+            <button type="submit" class="btn btn-lg btn-warning">
+                <span>Submit for review</span>
+            </button>
         </div>
     </div>
 

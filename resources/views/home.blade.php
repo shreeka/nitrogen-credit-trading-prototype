@@ -18,7 +18,7 @@
             </div>
             <div class="column">
                 <div class="column">
-                    <a href=""> <h2>Purchase credits</h2></a>
+                    <a href="/marketplace"> <h2>Purchase credits</h2></a>
                     <p>
                     <ul>
                         <li>Check credit listing offers in marketplace</li>
