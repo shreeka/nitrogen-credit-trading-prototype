@@ -18,7 +18,7 @@ class EligibilityController extends Controller
         $currentNitrogenBal = $request->input('currentNBal');
         $allowedSurplus = $request->input('allowedSurplus');
 
-
+        //example data from https://app.swaggerhub.com/apis-docs/tsig-idr/navigator-tool/0.0.1#/Nutrients/addF4
         $exampleDataF4 = [
             "input" => [
                 "area" => 99,
@@ -81,7 +81,7 @@ class EligibilityController extends Controller
                         "cost" => 9.15,
                         "method" => $fertiliserMethod,
                         "frequency" => $fertiliserFreq,
-                        "N" => 25,
+                        "N" => 46,
                         "P" => 0,
                         "P2O5" => 0,
                         "K" => 0,
@@ -608,22 +608,13 @@ class EligibilityController extends Controller
             ]
         ];
 
-
-   /*     $path = public_path('assets/myFarm.json');
-        $resultFromApi = File::json($path);
-
-        $dataF4 = ['input' => $resultFromApi['crops'][0]];*/
-
-
         $url =   'http://navigator-dev.teledeteccionysig.es/F4/requirements';
         $response = Http::post($url, $exampleDataF4);
         $resultData = $response->json();
-/*        $resultCollection = collect($resultData['results']);
-        $totalNBal = $resultCollection->sum('N_mineral_soil');*/
-
 
         $nutrientBalanceData = $resultData['results'][0]['nutrient_requirements'];
-        $fertiliserApplied = (int)$fertiliserAmount * (15/100);
+
+        $fertiliserApplied = (int)$fertiliserAmount * (46/100); // 46 is the N percent amount for Urea fertilizer
 
         $nutrientBalanceData['Noutputs_terms'] = array_map(function ($value) {
             return round($value, 2); // Round to 2 decimal places

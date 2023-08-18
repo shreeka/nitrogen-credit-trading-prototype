@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="yield" class="form-label">Yield (kg/ha)</label>
-                            <input required type="number" class="form-control" id="yield" name="yield" min="0" value="10000" />
+                            <input required type="number" class="form-control" id="yield" name="yield" min="0" value="1000" />
                         </div>
                     </div>
                 </div>
@@ -108,23 +108,23 @@
                         <div class="col-sm-2">
                             <select class="form-select" name="method">
                                 <option value="incorporated">Incorporated</option>
-                                <option value="topdressing">Top-dressing</option>
+                                <option value="topdressing" selected>Top-dressing</option>
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select class="form-select" name="frequency">
-                                <option value="annual">Annual</option>
+                                <option value="annual" selected>Annual</option>
                                 <option value="biennial">Biennial</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="offset-sm-1 col-sm-3">
-                            <input type="number" class="form-control" placeholder="Amount" id="amount" name="amount" min="0" value="1500" />
+                            <input type="number" class="form-control" placeholder="Amount" id="amount" name="amount" min="0" value = 500 />
                             <label for="amount" class="form-label">kg/ha</label>
                         </div>
                         <div class="col-sm-1">
-                            <input disabled type="number" class="form-control" id="N" name="N" value="25" min="0" max="100" step="0.001" />
+                            <input disabled type="number" class="form-control" id="N" name="N" value="46" min="0" max="100" step="0.001" />
                             <label for="N" class="form-label">% N</label>
                         </div>
                         <div class="col-sm-1">
@@ -144,7 +144,7 @@
             </div>
             <br/>
             <div class="card">
-                <h5 class="card-header">Current input</h5>
+                <h5 class="card-header">Current data</h5>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -153,7 +153,7 @@
                         </div>
                         <div class="col-sm-6">
                             <label for="currentNBal">Baseline Nitrogen Balance (kg/ha) (Current nitrogen surplus for the farm)</label>
-                            <input type="number" id="currentNBal" name="currentNBal" class="w-25" value="50">
+                            <input type="number" id="currentNBal" name="currentNBal" class="w-25" value="60">
                         </div>
 
 
@@ -169,85 +169,6 @@
                 </div>
             </div>
             <br/>
-            <div class="d-none" id="results">
-                <h3 class="text-center">Nutrients balance</h3>
-                <div class="row">
-                    <div class="col-sm-6" id="balance_input">
-                        <table class="table table-warning text-end" id="F4-tabla-2">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>N (FU/ha)</th>
-                                <th>P (FU/ha)</th>
-                                <th>K (FU/ha)</th>
-                                <th>P2O5 (FU/ha)</th>
-                                <th>K2O (FU/ha)</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr name="Nmineralization">
-                                <td>Mineralization</td>
-                            </tr>
-                            <tr name="Nfixation">
-                                <td>Fixation</td>
-                            </tr>
-                            <tr name="Nwater">
-                                <td>Irrigation</td>
-                            </tr>
-                            <tr name="NminInitial">
-                                <td>Initial of soil</td>
-                            </tr>
-                            <tr name="appliedFertilizer">
-                                <td>Fertilizer applied</td>
-                            </tr>
-                            <tr name="recommendedFertilizer">
-                                <td>Fertilizer recommended</td>
-                            </tr>
-                            <tr name="total" class="fs-5">
-                                <td>TOTAL INPUT</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-sm-6" id="balance_output">
-                        <table class="table table-warning text-end" id="F4-tabla-3">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th>N (FU/ha)</th>
-                                <th>P (FU/ha)</th>
-                                <th>K (FU/ha)</th>
-                                <th>P2O5 (FU/ha)</th>
-                                <th>K2O (FU/ha)</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr name="Nleaching">
-                                <td>Leaching</td>
-                            </tr>
-                            <tr name="Uptake">
-                                <td>Uptake</td>
-                            </tr>
-                            <tr name="NminPostharvest">
-                                <td>End of soil</td>
-                            </tr>
-                            <tr name="Ndenitrification">
-                                <td>Denitrification</td>
-                            </tr>
-                            <tr name="Nvolatilization">
-                                <td>Volatilization</td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr name="total" class="fs-5">
-                                <td>TOTAL OUTPUT</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
             </div>
         </form>
 

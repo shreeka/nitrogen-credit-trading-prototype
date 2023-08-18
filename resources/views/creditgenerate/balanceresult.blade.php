@@ -99,15 +99,21 @@
           <h6>Surplus allowance for the farm (kg/ha) : {{ $allowedSurplus }} </h6>
           <h6>Baseline Nitrogen Balance (kg/ha) (Current nitrogen surplus for the farm) : {{ $baselineNSurplus }} </h6>
 
-            @if ($nitrogenBal < $allowedSurplus)
-                @if($nitrogenBal < $baselineNSurplus)
-                    <p class="text-success h5">Credits generated: {{ $credits }}</p>
+            @if($nitrogenBal > 0)
+                @if ($nitrogenBal < $allowedSurplus)
+                    @if($nitrogenBal < $baselineNSurplus)
+                        <p class="text-success h5">Credits generated: {{ $credits }}</p>
+                    @else
+                        <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is more than baseline nitrogen balance.</p>
+                    @endif
                 @else
-                    <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is more than baseline nitrogen balance.</p>
+                    <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is more than surplus allowance.</p>
                 @endif
             @else
-                <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is more than surplus allowance.</p>
+                <p class="text-danger h5">Not eligible to generate credits. Nitrogen Balance is negative.</p>
             @endif
+
+
         </div>
     </div>
     <br>
